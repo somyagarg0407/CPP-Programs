@@ -1,0 +1,36 @@
+    Array	                Linked List
+Continuous memory	      Non-continuous
+Fixed size	              Dynamic
+Index-based	              Pointer-based
+Insertion costly	       Insertion easy
+
+Rule:(in dynmic allocation)
+You NEVER use the variable name directly
+You always go through the pointer
+
+⚠️ delete ❌
+✔ delete[] ✅
+
+Problem	                               Array	              Linked List
+Size fixed	                              ❌	                    ✅
+Insertion at beginning	              ❌ O(n)	              ✅ O(1)
+Memory continuous	                 Required	              Not required
+Wastage                              Possible	                 Minimal
+
+
+Linked list is: “A chain of dynamically allocated nodes,
+connected using pointers.”
+Each node:
+Created using new
+Destroyed using delete
+Ends with nullptr
+
+A linked list node is a self-referential structure.
+
+Each node is:
+Created using new
+Stored in heap
+Accessed using a pointer
+
+
+

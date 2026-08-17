@@ -1,0 +1,32 @@
+use  ----cin.ignore(1000, '\n');---- in case of this
+Used cin before getline()?
+👉 ALWAYS use cin.ignore()
+                    
+
+We’ll properly discuss tolower() later.
+
+reverse(name.begin(), name.end()); in task 4   -----  name.end() Iterator pointing to one position AFTER last character-----
+
+
+use #include <vector> for vectors
+
+v.size(); for finding size of vectors
+
+How to add elements:
+int x;
+cin >> x; -----important to use even we use push_back
+v.push_back(x);
+
+
+Easy loop (later):
+for(int x : v){
+    cout << x << " ";
+}
+
+
+
+Feature	            Array	              Vector
+Size	            Fixed ❌	            Dynamic ✅
+Safety	            Risky ❌	            Safe ✅
+Usage	            Old style	         Modern C++
+Real projects	    Rare	            Very common

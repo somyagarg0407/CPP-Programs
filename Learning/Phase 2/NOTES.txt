@@ -1,0 +1,5 @@
+--------task 6 important-------
+
+----Patterns = nested loops----
+    Outer loop → rows
+    Inner loop → columns

@@ -1,0 +1,6 @@
+float average=(float)sum/5 or sum/5.0
+
+task 3 is important for logic 
+
+bool found=false; //--------IMPORTANT FOR SEARCHING-----------
+break; // -------------IMPORTANT----------(in for condition and in nested if condition refereance task 6)

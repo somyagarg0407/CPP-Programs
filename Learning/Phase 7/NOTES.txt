@@ -1,0 +1,13 @@
+Pointers allow indirect modification of variables
+
+seee task 4 ------------------IMP--------------------------
+see task 5 -------------------------------IMP-----------------------
+
+when the function parameter is reference like &a then it expect a variable during calling 
+
+Function Parameter	  What it expects	How you call------------------------------------------------
+int x	                Value	            f(a)
+int* p	              Address	           f(&a)
+int &x	               Variable	           f(a)
+------------------------------------------------------------------------------------------------
+

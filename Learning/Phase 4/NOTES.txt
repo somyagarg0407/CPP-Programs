@@ -1,0 +1,5 @@
+if you use void function so donts call function using cout call it normally
+
+Variable Length Arrays (VLA) are not standard in C++  i.e.  dont suse arr[ ] in main function
+
+-----------TASK 6 is very important-------------------

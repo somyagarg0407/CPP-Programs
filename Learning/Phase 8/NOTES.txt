@@ -1,0 +1,38 @@
+Array is itself a pointer and contaions the address of first variable;
+
+----------task 3 important----------------  
+
+arr → address of arr[0]
+arr + 1 → address of arr[1]
+arr + 2 → address of arr[2]\
+
+------------(arr + i) == &arr[i]-------------
+
+arr[i] == *(arr + i) == *(p + i)    if   int*p=arr
+
+📌 That’s why these two function parameters are equivalent: 
+func(int arr[])
+func(int* arr)
+
+❌ Thinking array is copied to function
+❌ Using sizeof(arr) inside function
+❌ Forgetting to pass size  
+
+| Feature           | Pointer   | Reference |
+| ----------------- | -------   | --------- |
+| Stores address    | ✅ Yes   | ❌ No      |
+| Another name      | ❌ No    | ✅ Yes     |
+| Can be NULL       | ✅ Yes   | ❌ No      |
+| Can change target | ✅ Yes   | ❌ No      |
+| Needs dereference | ✅ Yes   | ❌ No      |
+
+
+new returns the address of the allocated memory.
+
+⚠️ Important tips (professional habits)
+Always use delete for every new
+Set pointer to nullptr after delete to avoid dangling pointer
+Never mix delete and delete[] (array vs single)
+
+
+---------------TASK 5 is very important---------------------

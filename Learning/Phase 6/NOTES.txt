@@ -1,0 +1,35 @@
+📌 Notes:
+class → blueprint
+public → accessible
+Variables inside → data members
+Functions inside → member functions
+
+-------------------------------------------------------------
+Class = blueprint
+Object = real thing
+------------------------------------------------------------------
+
+Important things in this in taskk 1
+------------------------------------------------------
+
+A constructor is a special function that runs automatically when an object is created.
+--------------------------------------------------------------
+
+A constructor:
+Has the same name as the class
+Has no return type (not even void)
+Runs automatically when an object is create
+
+ -------------------------------------------------------
+Can also use constructor as like this:--
+ car(string brand, int speed){
+    this->brand = brand;
+    this->speed = speed;
+}
+
+------------------------------------------------------------
+Anything under private:
+❌ cannot be accessed directly from main()
+-----------------------------------------------
+
+Encapsulation = Data protection + controlled access
