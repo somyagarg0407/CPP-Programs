@@ -1,69 +1,71 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iomanip>
 using namespace std;
+
+struct Process {
+    int pid, at, bt, ct, tat, wt, rt, start;
+};
 
 int main() {
     int n;
-
     cout << "Enter number of processes: ";
     cin >> n;
 
-    // Added PID array to keep track of original Process IDs
-    int AT[100], BT[100], CT[100], TAT[100], WT[100], PID[100];
+    vector<Process> p(n);
 
-    // Input
+    cout << "\nEnter Arrival Time and Burst Time:\n";
     for (int i = 0; i < n; i++) {
-        PID[i] = i + 1; // Assigning Process ID (1, 2, 3...)
-        cout << "Enter Arrival Time and Burst Time for P" << i + 1 << ": ";
-        cin >> AT[i] >> BT[i];
+        p[i].pid = i + 1;
+        cout << "P" << i + 1 << " AT BT: ";
+        cin >> p[i].at >> p[i].bt;
     }
 
-    // --- NEW: Sorting processes by Arrival Time (Bubble Sort) ---
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (AT[j] > AT[j + 1]) {
-                // Swap Arrival Time
-                swap(AT[j], AT[j + 1]);
-                
-                // Swap Burst Time
-                swap(BT[j], BT[j + 1]);
-                
-                // Swap Process ID
-                swap(PID[j], PID[j + 1]);
-            }
-        }
-    }
-    
+    sort(p.begin(), p.end(), [](Process a, Process b) {
+        if (a.at == b.at)
+            return a.pid < b.pid;
+        return a.at < b.at;
+    });
 
-    // FCFS calculation
     int currentTime = 0;
 
     for (int i = 0; i < n; i++) {
+        if (currentTime < p[i].at)
+            currentTime = p[i].at;
 
-        // If CPU is idle
-        if (currentTime < AT[i])
-            currentTime = AT[i];
+        p[i].start = currentTime;
+        currentTime += p[i].bt;
+        p[i].ct = currentTime;
 
-        CT[i] = currentTime + BT[i];
-
-        TAT[i] = CT[i] - AT[i];
-
-        WT[i] = TAT[i] - BT[i];
-
-        currentTime = CT[i];
+        p[i].tat = p[i].ct - p[i].at;
+        p[i].wt = p[i].tat - p[i].bt;
+        p[i].rt = p[i].start - p[i].at;
     }
 
-    // Output
-    cout << "\nProcess\tAT\tBT\tCT\tTAT\tWT\n";
+    cout << "\n========== FCFS ==========\n";
+    cout << "\nPID\tAT\tBT\tCT\tTAT\tWT\tRT\n";
 
-    for (int i = 0; i < n; i++) {
-        // Updated to use PID[i] instead of i + 1
-        cout << "P" << PID[i] << "\t"
-             << AT[i] << "\t"
-             << BT[i] << "\t"
-             << CT[i] << "\t"
-             << TAT[i] << "\t"
-             << WT[i] << endl; 
+    double avgWT = 0, avgTAT = 0, avgRT = 0;
+
+    for (auto x : p) {
+        cout << x.pid << "\t"
+             << x.at << "\t"
+             << x.bt << "\t"
+             << x.ct << "\t"
+             << x.tat << "\t"
+             << x.wt << "\t"
+             << x.rt << "\n";
+
+        avgWT += x.wt;
+        avgTAT += x.tat;
+        avgRT += x.rt;
     }
+
+    cout << fixed << setprecision(2);
+    cout << "\nAverage Waiting Time    = " << avgWT / n;
+    cout << "\nAverage Turnaround Time = " << avgTAT / n;
+    cout << "\nAverage Response Time   = " << avgRT / n << "\n";
 
     return 0;
 }
